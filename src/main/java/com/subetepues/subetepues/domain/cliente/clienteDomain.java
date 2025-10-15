@@ -19,8 +19,8 @@ public class clienteDomain {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "clienteId", updatable = false, nullable = false)
-    private UUID id;
+    @Column(name = "id_cliente", updatable = false, nullable = false)
+    private UUID idCliente;
 
     @Column(name = "nombre")
     private String nombre;
