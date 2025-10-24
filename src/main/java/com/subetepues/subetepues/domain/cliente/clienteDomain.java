@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.UUID;
-
+//hola
 @Entity
 @Table(name ="cliente")
 @Getter
