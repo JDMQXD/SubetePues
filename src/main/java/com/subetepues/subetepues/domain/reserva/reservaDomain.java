@@ -1,6 +1,9 @@
 package com.subetepues.subetepues.domain.reserva;
 
 
+import com.subetepues.subetepues.domain.cliente.clienteDomain;
+import com.subetepues.subetepues.domain.servicio.servicioDomain;
+import com.subetepues.subetepues.domain.vehiculo.vehiculoDomain;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,6 +27,18 @@ public class reservaDomain {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_Reserva", updatable = false, nullable = false)
     private UUID idReserva;
+
+    @ManyToOne
+    @JoinColumn(name = "idServicio")
+    private servicioDomain servicio;
+
+    @ManyToOne
+    @JoinColumn(name = "idVehiculo")
+    private vehiculoDomain vehiculo;
+
+    @ManyToOne
+    @JoinColumn(name = "idCliente")
+    private clienteDomain cliente;
 
     @Column(name = "fechaReserva")
     private Date fechaReserva;
