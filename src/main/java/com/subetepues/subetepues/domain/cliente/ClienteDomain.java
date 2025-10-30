@@ -1,45 +1,44 @@
 package com.subetepues.subetepues.domain.cliente;
 
+import com.subetepues.subetepues.domain.documento.documentoDomain;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.UUID;
 
 @Entity
-@Table(name = "cliente")
-public class ClienteDomain {
+@Table(name ="cliente")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+
+public class clienteDomain {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_cliente", updatable = false, nullable = false)
     private UUID idCliente;
 
-    @Column(nullable = false)
+    @Column(name = "nombre")
     private String nombre;
 
-    @Column(nullable = false, unique = true)
+    @ManyToOne
+    @JoinColumn(name = "idDocumento")
+    private documentoDomain tipoDocumento;
+
+    @Column(name = "documento")
+    private String documento;
+
+    @Column(name = "telefono")
+    private int telefono;
+
+    @Column(name = "correo")
     private String correo;
 
-    @Column(nullable = false)
-    private String telefono;
-
-    @Column(nullable = false)
-    private boolean registrado;
-
-    public ClienteDomain() {}
-
-    public ClienteDomain(String nombre, String correo, String telefono, boolean registrado) {
-        this.nombre = nombre;
-        this.correo = correo;
-        this.telefono = telefono;
-        this.registrado = registrado;
-    }
-
-    public UUID getIdCliente() { return idCliente; }
-    public String getNombre() { return nombre; }
-    public void setNombre(String nombre) { this.nombre = nombre; }
-    public String getCorreo() { return correo; }
-    public void setCorreo(String correo) { this.correo = correo; }
-    public String getTelefono() { return telefono; }
-    public void setTelefono(String telefono) { this.telefono = telefono; }
-    public boolean isRegistrado() { return registrado; }
-    public void setRegistrado(boolean registrado) { this.registrado = registrado; }
+    @Column(name = "password")
+    private String password;
 }

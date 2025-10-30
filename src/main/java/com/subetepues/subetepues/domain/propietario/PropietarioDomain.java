@@ -1,46 +1,56 @@
-
 package com.subetepues.subetepues.domain.propietario;
 
+
+import com.subetepues.subetepues.domain.documento.documentoDomain;
 import jakarta.persistence.*;
-import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.Date;
 import java.util.UUID;
 
-@Entity
 @Table(name = "propietario")
-public class PropietarioDomain {
+@Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+
+public class propietarioDomain {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_propietario", updatable = false, nullable = false)
-    private UUID idPropietario;
+    private UUID idpropietario;
 
-    @Column(nullable = false)
+    @Column(name = "nombre")
     private String nombre;
 
-    @Column(nullable = false, unique = true)
-    private String correo;
+    @ManyToOne
+    @JoinColumn(name = "idDocumento")
+    private documentoDomain tipoDocumento;
 
-    @Column(nullable = false)
+    @Column(name = "documento")
+    private String documento;
+
+    @Column(name = "telefono")
     private String telefono;
 
-    @OneToMany(mappedBy = "propietario", cascade = CascadeType.ALL)
-    private List<com.subetepues.subetepues.domain.vehiculo.VehiculoDomain> vehiculos;
+    @Column(name = "correo")
+    private String correo;
 
-    public PropietarioDomain() {}
+    @Column(name = "direccion")
+    private String direccion;
 
-    public PropietarioDomain(String nombre, String correo, String telefono) {
-        this.nombre = nombre;
-        this.correo = correo;
-        this.telefono = telefono;
-    }
+    @Column(name = "usuario")
+    private String usuario;
 
-    public UUID getIdPropietario() { return idPropietario; }
-    public String getNombre() { return nombre; }
-    public void setNombre(String nombre) { this.nombre = nombre; }
-    public String getCorreo() { return correo; }
-    public void setCorreo(String correo) { this.correo = correo; }
-    public String getTelefono() { return telefono; }
-    public void setTelefono(String telefono) { this.telefono = telefono; }
-    public List<com.subetepues.subetepues.domain.vehiculo.VehiculoDomain> getVehiculos() { return vehiculos; }
-    public void setVehiculos(List<com.subetepues.subetepues.domain.vehiculo.VehiculoDomain> vehiculos) { this.vehiculos = vehiculos; }
+    @Column(name = "password")
+    private String password;
+
+    @Column(name = "fechaRegistro")
+    private Date fechaRegistro;
+
 }

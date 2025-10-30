@@ -1,70 +1,69 @@
 package com.subetepues.subetepues.domain.vehiculo;
 
+
+import com.subetepues.subetepues.domain.ciudad.ciudadDomain;
+import com.subetepues.subetepues.domain.disponibilidad.disponibilidadDomain;
+import com.subetepues.subetepues.domain.propietario.propietarioDomain;
+import com.subetepues.subetepues.domain.tipoVehiculo.tipoVehiculoDomain;
+import com.subetepues.subetepues.domain.transmision.transmisionDomain;
 import jakarta.persistence.*;
-import com.subetepues.subetepues.domain.propietario.PropietarioDomain;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.Date;
 import java.util.UUID;
 
-@Entity
 @Table(name = "vehiculo")
-public class VehiculoDomain {
+@Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+
+
+public class vehiculoDomain {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_vehiculo", updatable = false, nullable = false)
     private UUID idVehiculo;
 
-    @Column(nullable = false, unique = true)
-    private String placa;
+    @ManyToOne
+    @JoinColumn(name = "idTrasnmision")
+    private transmisionDomain transmision;
 
-    @Column(nullable = false)
-    private String marca;
+    @ManyToOne
+    @JoinColumn(name = "idCiudad")
+    private ciudadDomain ubicacion;
 
-    @Column(nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "idpropietario")
+    private propietarioDomain propietario;
+
+    @ManyToOne
+    @JoinColumn(name = "idTipoVehiculo")
+    private tipoVehiculoDomain tipoVehiculo;
+
+    @ManyToOne
+    @JoinColumn(name = "idDisponibilidad")
+    private disponibilidadDomain disponibilidad;
+
+    @Column(name = "modelo")
     private String modelo;
 
-    @ManyToOne
-    @JoinColumn(name = "id_transmision", nullable = false)
-    private TransmisionDomain transmision;
+    @Column(name = "marca")
+    private String marca;
 
-    @ManyToOne
-    @JoinColumn(name = "id_tipo_vehiculo", nullable = false)
-    private TipoVehiculoDomain tipoVehiculo;
+    @Column(name = "especificacion")
+    private String especificacion;
 
-    @ManyToOne
-    @JoinColumn(name = "id_ciudad", nullable = false)
-    private CiudadDomain ciudad;
+    @Column(name = "estadoDeCuenta")
+    private String estadoDeCuenta;
 
-    @ManyToOne
-    @JoinColumn(name = "id_propietario", nullable = false)
-    private PropietarioDomain propietario;
+    @Column(name = "fechaRegistro")
+    private Date fechaRegistro;
 
-    public VehiculoDomain() {}
 
-    public VehiculoDomain(String placa, String marca, String modelo,
-                          TransmisionDomain transmision, TipoVehiculoDomain tipoVehiculo,
-                          CiudadDomain ciudad, PropietarioDomain propietario) {
-        this.placa = placa;
-        this.marca = marca;
-        this.modelo = modelo;
-        this.transmision = transmision;
-        this.tipoVehiculo = tipoVehiculo;
-        this.ciudad = ciudad;
-        this.propietario = propietario;
-    }
-
-    public UUID getIdVehiculo() { return idVehiculo; }
-    public String getPlaca() { return placa; }
-    public void setPlaca(String placa) { this.placa = placa; }
-    public String getMarca() { return marca; }
-    public void setMarca(String marca) { this.marca = marca; }
-    public String getModelo() { return modelo; }
-    public void setModelo(String modelo) { this.modelo = modelo; }
-    public TransmisionDomain getTransmision() { return transmision; }
-    public void setTransmision(TransmisionDomain transmision) { this.transmision = transmision; }
-    public TipoVehiculoDomain getTipoVehiculo() { return tipoVehiculo; }
-    public void setTipoVehiculo(TipoVehiculoDomain tipoVehiculo) { this.tipoVehiculo = tipoVehiculo; }
-    public CiudadDomain getCiudad() { return ciudad; }
-    public void setCiudad(CiudadDomain ciudad) { this.ciudad = ciudad; }
-    public PropietarioDomain getPropietario() { return propietario; }
-    public void setPropietario(PropietarioDomain propietario) { this.propietario = propietario; }
 }
