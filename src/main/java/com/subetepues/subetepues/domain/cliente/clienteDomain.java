@@ -1,5 +1,6 @@
 package com.subetepues.subetepues.domain.cliente;
 
+import com.subetepues.subetepues.domain.documento.documentoDomain;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,8 +26,9 @@ public class clienteDomain {
     @Column(name = "nombre")
     private String nombre;
 
-    @Column(name = "tipoDocumento")
-    private int tipoDocumento;
+    @ManyToOne
+    @JoinColumn(name = "idDocumento")
+    private documentoDomain tipoDocumento;
 
     @Column(name = "documento")
     private String documento;
