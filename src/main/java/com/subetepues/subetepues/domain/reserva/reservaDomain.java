@@ -2,7 +2,7 @@ package com.subetepues.subetepues.domain.reserva;
 
 
 import com.subetepues.subetepues.domain.cliente.clienteDomain;
-import com.subetepues.subetepues.domain.servicio.servicioDomain;
+import com.subetepues.subetepues.domain.servicio.ServicioDomain;
 import com.subetepues.subetepues.domain.vehiculo.vehiculoDomain;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -30,7 +30,7 @@ public class reservaDomain {
 
     @ManyToOne
     @JoinColumn(name = "idServicio")
-    private servicioDomain servicio;
+    private ServicioDomain servicio;
 
     @ManyToOne
     @JoinColumn(name = "idVehiculo")
