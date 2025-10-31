@@ -1,44 +1,52 @@
 package com.subetepues.subetepues.security;
 
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.JwtException;
-import org.springframework.stereotype.Component;
+import io.jsonwebtoken.*;
 
-import java.util.Date;
+import java.security.Key;
+import java.util.*;
+import io.jsonwebtoken.security.Keys;
+import org.springframework.stereotype.Component;
 
 @Component
 public class JwtUtil {
 
-    private static final String SECRET_KEY = "clave_super_secreta"; // 🔒 cámbiala en producción
-    private static final long EXPIRATION_TIME = 1000 * 60 * 60; // 1 hora
+    private static final String SECRET_KEY = "clave_super_secreta_para_jwt_1234567890";
+    private final Key key = Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
 
-    // ✅ Genera el token JWT
-    public String generateToken(String username) {
+    public String generarToken(String username, String role) {
+        Map<String, Object> claims = new HashMap<>();
+        claims.put("role", role);
         return Jwts.builder()
-                .setSubject(username) // correo o nombre de usuario
+                .setClaims(claims)
+                .setSubject(username)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
-                .signWith(SignatureAlgorithm.HS256, SECRET_KEY)
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60)) // 1 hora
+                .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
     }
 
-    // ✅ Extrae el usuario del token
-    public String extractUsername(String token) {
-        return Jwts.parser()
-                .setSigningKey(SECRET_KEY)
+    public Claims obtenerClaims(String token) {
+        return Jwts.parserBuilder()
+                .setSigningKey(key)
+                .build()
                 .parseClaimsJws(token)
-                .getBody()
-                .getSubject();
+                .getBody();
     }
 
-    // ✅ Valida que el token sea correcto y no esté expirado
-    public boolean isTokenValid(String token) {
+    public boolean validarToken(String token) {
         try {
-            Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token);
+            obtenerClaims(token);
             return true;
         } catch (JwtException | IllegalArgumentException e) {
             return false;
         }
+    }
+
+    public String obtenerUsername(String token) {
+        return obtenerClaims(token).getSubject();
+    }
+
+    public String obtenerRole(String token) {
+        return (String) obtenerClaims(token).get("role");
     }
 }

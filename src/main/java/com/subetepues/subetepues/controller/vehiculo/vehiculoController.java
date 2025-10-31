@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/vehiculos")
+@RequestMapping("/")
 public class vehiculoController {
 
     private vehiculoServices vehiculoServices;
@@ -22,7 +22,7 @@ public class vehiculoController {
         this.vehiculoServices = vehiculoServices;
     }
 
-    @GetMapping("/all")
+    @GetMapping("")
     public List<vehiculoDomain> getAllVehiculos(){
         return  vehiculoServices.getAllVehiculo();
     }
@@ -34,12 +34,12 @@ public class vehiculoController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping
+    @PostMapping("propietario/crear")
     public vehiculoDomain saveVehiculo(@RequestBody vehiculoDomain vehiculo) {
         return vehiculoServices.saveVehiculo(vehiculo);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("propietario/update/{id}")
     public ResponseEntity<vehiculoDomain> updatevehiculo(@PathVariable UUID id, @RequestBody vehiculoDomain vehiculo) {
         try {
             vehiculoDomain updated = vehiculoServices.updateVehiculo(id, vehiculo);
@@ -49,7 +49,7 @@ public class vehiculoController {
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("propietario/eliminar/{id}")
     public ResponseEntity<Void> deleteVehiculo(@PathVariable UUID id) {
         vehiculoServices.deleteVehiculo(id);
         return ResponseEntity.noContent().build();

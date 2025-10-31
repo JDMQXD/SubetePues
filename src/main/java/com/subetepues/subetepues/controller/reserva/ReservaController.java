@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/reservas")
+@RequestMapping("/user")
 public class ReservaController {
 
     private ReservaServices reservaService;
@@ -18,12 +18,12 @@ public class ReservaController {
         this.reservaService = reservaService;
     }
 
-    @GetMapping("/all")
+    @GetMapping("/reserva/all")
     public List<reservaDomain> getAllReservas() {
         return reservaService.getAllReservas();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/reserva/{id}")
     public ResponseEntity<reservaDomain> getReservaById(@PathVariable UUID id) {
         return reservaService.getReservaById(id)
                 .map(ResponseEntity::ok)
