@@ -37,21 +37,21 @@ public class vehiculoServices {
     public vehiculoDomain updateVehiculo(UUID id, vehiculoDomain updatedVehiculo) {
         return vehiculoRepository.findById(id)
                 .map(vehiculo -> {
-                    // Campos simples
+
                     vehiculo.setModelo(updatedVehiculo.getModelo());
                     vehiculo.setMarca(updatedVehiculo.getMarca());
                     vehiculo.setEspecificacion(updatedVehiculo.getEspecificacion());
                     vehiculo.setEstadoDeCuenta(updatedVehiculo.getEstadoDeCuenta());
                     vehiculo.setFechaRegistro(updatedVehiculo.getFechaRegistro());
 
-                    // Relaciones
+
                     vehiculo.setTransmision(updatedVehiculo.getTransmision());
                     vehiculo.setUbicacion(updatedVehiculo.getUbicacion());
                     vehiculo.setPropietario(updatedVehiculo.getPropietario());
                     vehiculo.setTipoVehiculo(updatedVehiculo.getTipoVehiculo());
                     vehiculo.setDisponibilidad(updatedVehiculo.getDisponibilidad());
 
-                    // Guardar cambios
+
                     return vehiculoRepository.save(vehiculo);
                 })
                 .orElseThrow(() -> new RuntimeException("Vehículo no encontrado con id: " + id));

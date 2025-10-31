@@ -39,7 +39,7 @@ public class ReservaServices {
                     reserva.setFechaInicio(updatedReserva.getFechaInicio());
                     reserva.setFechaFin(updatedReserva.getFechaFin());
                     reserva.setLugarEntrega(updatedReserva.getLugarEntrega());
-                    reserva.setCliente(updatedReserva.getCliente());
+                    reserva.setUsuario(updatedReserva.getUsuario());
                     reserva.setVehiculo(updatedReserva.getVehiculo());
                     reserva.setServicio(updatedReserva.getServicio());
                     return reservaRepository.save(reserva);
