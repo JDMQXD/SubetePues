@@ -22,7 +22,7 @@ public class departamentoDomain {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_departamento", updatable = false, nullable = false)
-    private UUID idDpartamento;
+    private UUID idDepartamento;
 
     @Column(name = "nombre")
     private String nombre;
