@@ -6,6 +6,7 @@ import com.subetepues.subetepues.domain.disponibilidad.disponibilidadDomain;
 import com.subetepues.subetepues.domain.propietario.propietarioDomain;
 import com.subetepues.subetepues.domain.tipoVehiculo.tipoVehiculoDomain;
 import com.subetepues.subetepues.domain.transmision.transmisionDomain;
+import com.subetepues.subetepues.domain.usuario.usuarioDomain;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -39,8 +40,8 @@ public class vehiculoDomain {
     private ciudadDomain ubicacion;
 
     @ManyToOne
-    @JoinColumn(name = "idpropietario")
-    private propietarioDomain propietario;
+    @JoinColumn(name = "idUsuario")
+    private usuarioDomain usuario;
 
     @ManyToOne
     @JoinColumn(name = "idTipoVehiculo")

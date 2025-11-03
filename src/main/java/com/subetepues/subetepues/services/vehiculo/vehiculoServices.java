@@ -47,7 +47,7 @@ public class vehiculoServices {
 
                     vehiculo.setTransmision(updatedVehiculo.getTransmision());
                     vehiculo.setUbicacion(updatedVehiculo.getUbicacion());
-                    vehiculo.setPropietario(updatedVehiculo.getPropietario());
+                    vehiculo.setUsuario(updatedVehiculo.getUsuario());
                     vehiculo.setTipoVehiculo(updatedVehiculo.getTipoVehiculo());
                     vehiculo.setDisponibilidad(updatedVehiculo.getDisponibilidad());
 

@@ -2,11 +2,19 @@ package com.subetepues.subetepues.domain.servicio;
 
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.UUID;
 
 @Entity
 @Table(name = "servicio")
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 
 public class ServicioDomain {
 

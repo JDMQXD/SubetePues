@@ -27,7 +27,7 @@ public class ciudadDomain {
     private String nombre;
 
     @ManyToOne
-    @JoinColumn(name = "idDpartamento")
+    @JoinColumn(name = "idDepartamento")
     private departamentoDomain departamento;
 
 }
