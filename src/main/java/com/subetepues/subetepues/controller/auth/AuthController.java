@@ -41,7 +41,12 @@ public class AuthController {
 
         return Map.of(
                 "token", token,
-                "usuario", usuario.getNombre(),
+                "usuario", Map.of(
+                        "idUsuario", usuario.getIdUsuario(),
+                        "nombre", usuario.getNombre(),
+                        "correo", usuario.getCorreo(),
+                        "rol", usuario.getRol().getNombre()
+                ),
                 "correo", usuario.getCorreo(),
                 "rol", rolNombre
         );
