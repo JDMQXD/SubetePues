@@ -32,7 +32,7 @@ public class vehiculoDomain {
     private UUID idVehiculo;
 
     @ManyToOne
-    @JoinColumn(name = "idTrasnmision")
+    @JoinColumn(name = "idTransmision")
     private transmisionDomain transmision;
 
     @ManyToOne
