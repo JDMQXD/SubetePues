@@ -57,4 +57,8 @@ public class vehiculoServices {
                 .orElseThrow(() -> new RuntimeException("Vehículo no encontrado con id: " + id));
     }
 
+    public List<vehiculoDomain> getVehiculosByPropietario(String correo) {
+        return vehiculoRepository.findByUsuarioCorreo(correo);
+    }
+
 }

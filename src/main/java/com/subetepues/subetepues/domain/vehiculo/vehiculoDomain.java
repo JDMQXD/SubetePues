@@ -40,7 +40,7 @@ public class vehiculoDomain {
     private ciudadDomain ubicacion;
 
     @ManyToOne
-    @JoinColumn(name = "idUsuario")
+    @JoinColumn(name = "id_usuario")
     private usuarioDomain usuario;
 
     @ManyToOne
@@ -59,9 +59,6 @@ public class vehiculoDomain {
 
     @Column(name = "especificacion")
     private String especificacion;
-
-    @Column(name = "estadoDeCuenta")
-    private String estadoDeCuenta;
 
     @Column(name = "fechaRegistro")
     private Date fechaRegistro;
