@@ -25,6 +25,7 @@ public class JwtFilter extends OncePerRequestFilter {
                                     FilterChain filterChain) throws ServletException, IOException {
 
         String authHeader = request.getHeader("Authorization");
+
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
             String token = authHeader.substring(7);
 
@@ -32,16 +33,36 @@ public class JwtFilter extends OncePerRequestFilter {
                 String username = jwtUtil.obtenerUsername(token);
                 String role = jwtUtil.obtenerRole(token);
 
+                if (role != null) {
+                    role = role.trim().replace("\"", "");
+                }
+
+                System.out.println("🔑 Token recibido: " + token);
+                System.out.println("👤 Usuario: " + username);
+                System.out.println("🧭 Rol en token: " + role);
+
+                // Spring espera las autoridades con el prefijo ROLE_
+                if (!role.startsWith("ROLE_")) {
+                    role = "ROLE_" + role;
+                }
+
                 UsernamePasswordAuthenticationToken authentication =
-                        new UsernamePasswordAuthenticationToken(username, null,
-                                List.of(new SimpleGrantedAuthority(role)));
+                        new UsernamePasswordAuthenticationToken(
+                                username,
+                                null,
+                                List.of(new SimpleGrantedAuthority(role))
+                        );
 
                 SecurityContextHolder.getContext().setAuthentication(authentication);
+
+                System.out.println("✅ Context authorities: " +
+                        SecurityContextHolder.getContext().getAuthentication().getAuthorities());
             }
         }
 
         filterChain.doFilter(request, response);
     }
+
 }
 
 

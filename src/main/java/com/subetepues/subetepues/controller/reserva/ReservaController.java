@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/user/reserva")
+@RequestMapping("/")
 public class ReservaController {
 
     private ReservaServices reservaService;
@@ -18,24 +18,24 @@ public class ReservaController {
         this.reservaService = reservaService;
     }
 
-    @GetMapping("/all")
+    @GetMapping("admin/all")
     public List<reservaDomain> getAllReservas() {
         return reservaService.getAllReservas();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("user/reserva/{id}")
     public ResponseEntity<reservaDomain> getReservaById(@PathVariable UUID id) {
         return reservaService.getReservaById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping
+    @PostMapping("user/reserva")
     public reservaDomain createReserva(@RequestBody reservaDomain reserva) {
         return reservaService.createReserva(reserva);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("user/reserva/{id}")
     public ResponseEntity<reservaDomain> updateReserva(@PathVariable UUID id, @RequestBody reservaDomain reserva) {
         try {
             reservaDomain updated = reservaService.updateReserva(id, reserva);
@@ -45,7 +45,7 @@ public class ReservaController {
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("admin/{id}")
     public ResponseEntity<Void> deleteReserva(@PathVariable UUID id) {
         reservaService.deleteReserva(id);
         return ResponseEntity.noContent().build();

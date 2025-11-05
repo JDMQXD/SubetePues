@@ -41,7 +41,6 @@ public class vehiculoServices {
                     vehiculo.setModelo(updatedVehiculo.getModelo());
                     vehiculo.setMarca(updatedVehiculo.getMarca());
                     vehiculo.setEspecificacion(updatedVehiculo.getEspecificacion());
-                    vehiculo.setEstadoDeCuenta(updatedVehiculo.getEstadoDeCuenta());
                     vehiculo.setFechaRegistro(updatedVehiculo.getFechaRegistro());
 
 

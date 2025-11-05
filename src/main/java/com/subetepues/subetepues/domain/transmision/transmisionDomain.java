@@ -20,7 +20,7 @@ public class transmisionDomain {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_transmision", updatable = false, nullable = false)
-    private UUID idTrasnmision;
+    private UUID idTransmision;
 
     @Column(name = "nombre")
     private String nombre;
