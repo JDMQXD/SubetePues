@@ -40,7 +40,7 @@ public class SecurityConfig {
     @Bean
     public CommandLineRunner runner(PasswordEncoder encoder) {
         return args -> {
-            String raw = "123"; // <-- la contraseña que quieras codificar
+            String raw = "123";
             String hashed = encoder.encode(raw);
             System.out.println("BCrypt hash: " + hashed);
         };

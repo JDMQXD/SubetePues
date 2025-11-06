@@ -37,9 +37,9 @@ public class JwtFilter extends OncePerRequestFilter {
                     role = role.trim().replace("\"", "");
                 }
 
-                System.out.println("🔑 Token recibido: " + token);
-                System.out.println("👤 Usuario: " + username);
-                System.out.println("🧭 Rol en token: " + role);
+                System.out.println("Token recibido: " + token);
+                System.out.println("Usuario: " + username);
+                System.out.println("Rol en token: " + role);
 
                 // Spring espera las autoridades con el prefijo ROLE_
                 if (!role.startsWith("ROLE_")) {
@@ -55,7 +55,7 @@ public class JwtFilter extends OncePerRequestFilter {
 
                 SecurityContextHolder.getContext().setAuthentication(authentication);
 
-                System.out.println("✅ Context authorities: " +
+                System.out.println("Context authorities: " +
                         SecurityContextHolder.getContext().getAuthentication().getAuthorities());
             }
         }
