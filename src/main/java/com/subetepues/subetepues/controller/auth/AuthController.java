@@ -12,7 +12,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/auth")
-@CrossOrigin(origins = "*") // para que funcione con el frontend
+@CrossOrigin(origins = "*")
 public class AuthController {
 
     @Autowired

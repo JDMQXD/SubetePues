@@ -35,7 +35,7 @@ public class ReservaController {
         return reservaService.createReserva(reserva);
     }
 
-    @PutMapping("user/reserva/{id}")
+    @PutMapping("admin/reserva/{id}")
     public ResponseEntity<reservaDomain> updateReserva(@PathVariable UUID id, @RequestBody reservaDomain reserva) {
         try {
             reservaDomain updated = reservaService.updateReserva(id, reserva);
