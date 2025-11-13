@@ -31,6 +31,10 @@ git clone https://github.com/JDMQXD/SubetePues.git
 ```
 ##  Documentacion
 
+**Documento preearchivo**
+https://docs.google.com/document/d/1madzKqQmo19n8d3K0bNrtC__Nc_IyShQ/edit?usp=sharing&ouid=116726829973707351376&rtpof=true&sd=true
+
+
 **Diagrama preconceptual**
 
 <img width="3144" height="1437" alt="SubetePues-Diagrama preconceptual drawio" src="https://github.com/user-attachments/assets/93c60c3b-7c9e-4b34-a268-26649142bdcd" />
