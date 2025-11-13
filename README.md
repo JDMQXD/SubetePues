@@ -29,6 +29,11 @@ Asegúrate de tener instalados los siguientes componentes:
 # Clonar el repositorio
 git clone https://github.com/JDMQXD/SubetePues.git
 ```
+## SQL base de datos
+
+[DatosParaBaseDatos.zip](https://github.com/user-attachments/files/23515795/DatosParaBaseDatos.zip)
+
+
 ##  Documentacion
 
 **Documento preearchivo**
