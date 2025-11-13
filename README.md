@@ -3,6 +3,10 @@
 Bienvenido/a al repositorio del proyecto **SubetePues**.  
 Este proyecto está construido con **Java** y utiliza **Gradle** como sistema de gestión de dependencias y compilación.
 
+**Proyecto realizado por:**
+ - Juan David Martinez Quintero
+ - Juan Esteban Garibello
+ - Simon Flores
 ---
 
 ## 🚀 Configuración del Proyecto con Gradle
