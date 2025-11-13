@@ -9,6 +9,9 @@ Este proyecto está construido con **Java** y utiliza **Gradle** como sistema de
  - Simon Flores
 ---
 
+## IMPORTANTE ##
+El codigo funcional esta en la rama develop
+
 ## 🚀 Configuración del Proyecto con Gradle
 
 ### 🔧 Requisitos previos
@@ -22,10 +25,6 @@ Asegúrate de tener instalados los siguientes componentes:
 ---
 
 ### ⚙️ Cómo compilar y ejecutar el proyecto
-
-**IMPORTANTE**
-El codigo funcional esta en la rama develop
-
 ```bash
 # Clonar el repositorio
 git clone https://github.com/JDMQXD/SubetePues.git
