@@ -1,5 +1,7 @@
-package com.subetepues.subetepues.domain.cliente;
+package com.subetepues.subetepues.domain.usuario;
 
+import com.subetepues.subetepues.domain.documento.documentoDomain;
+import com.subetepues.subetepues.domain.rol.rolDomain;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,24 +11,25 @@ import lombok.Setter;
 import java.util.UUID;
 
 @Entity
-@Table(name ="cliente")
+@Table(name ="usuario")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class clienteDomain {
+public class usuarioDomain {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "clienteId", updatable = false, nullable = false)
-    private UUID id;
+    @Column(name = "id_usuario", updatable = false, nullable = false)
+    private UUID idUsuario;
 
     @Column(name = "nombre")
     private String nombre;
 
-    @Column(name = "tipoDocumento")
-    private int tipoDocumento;
+    @ManyToOne
+    @JoinColumn(name = "idDocumento")
+    private documentoDomain tipoDocumento;
 
     @Column(name = "documento")
     private String documento;
@@ -39,4 +42,8 @@ public class clienteDomain {
 
     @Column(name = "password")
     private String password;
+
+    @ManyToOne
+    @JoinColumn(name = "idRol")
+    private rolDomain rol;
 }
