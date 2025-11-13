@@ -3,7 +3,6 @@ package com.subetepues.subetepues.domain.vehiculo;
 
 import com.subetepues.subetepues.domain.ciudad.ciudadDomain;
 import com.subetepues.subetepues.domain.disponibilidad.disponibilidadDomain;
-import com.subetepues.subetepues.domain.propietario.propietarioDomain;
 import com.subetepues.subetepues.domain.tipoVehiculo.tipoVehiculoDomain;
 import com.subetepues.subetepues.domain.transmision.transmisionDomain;
 import com.subetepues.subetepues.domain.usuario.usuarioDomain;
